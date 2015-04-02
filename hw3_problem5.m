@@ -35,6 +35,7 @@ data_matrix = data;
 
 for ii = 1:(length(channel))
     xe(ii) = 0.1953e-3*abs(channel(ii)); 
+    lat(ii) = 0.1953e-3*channel(ii);
     d_1(ii) = ((xe(ii)-((-1/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
     time_to_point_1(ii) = d_1(ii)/speed;
     d_2(ii) = ((xe(ii)-((1/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
@@ -53,6 +54,7 @@ end
 
 
 end
+ax = [1:rows_data_matrix]*pixel_size_through_depth;
 
 [delay_rows delay_col delay_beams] = size(delayed_channel_1);
 delayed_channel = zeros(rows_data_matrix,128,128);
@@ -73,8 +75,9 @@ end
 
 summed_channels = sum(delayed_channel,2);
 figure;
-imagesc(20*log10(abs(hilbert(summed_channels(:,:)))));
+imagesc(lat, ax,20*log10(abs(hilbert(summed_channels(:,:)))));
 colormap('gray');
+axis image;
 title('2 parallel beams, (pointTargetData.mat)');
 
 
@@ -240,6 +243,7 @@ data_matrix = data;
 
 for ii = 1:(length(channel))
     xe(ii) = 0.1953e-3*abs(channel(ii)); 
+    lat(ii) =  0.1953e-3*channel(ii); 
     d_1(ii) = ((xe(ii)-((-3/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
     time_to_point_1(ii) = d_1(ii)/speed;
     d_2(ii) = ((xe(ii)-((-1/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
@@ -266,6 +270,7 @@ end
 
 
 end
+ax = [1:rows_data_matrix]*pixel_size_through_depth;
 
 [delay_rows delay_col delay_beams] = size(delayed_channel_1);
 delayed_channel = zeros(rows_data_matrix,128,128);
@@ -292,8 +297,9 @@ end
 
 summed_channels = sum(delayed_channel,2);
 figure;
-imagesc(20*log10(abs(hilbert(summed_channels(:,:)))));
+imagesc(lat,ax,20*log10(abs(hilbert(summed_channels(:,:)))));
 colormap('gray');
+axis image;
 title('4 parallel beams, (pointTargetData.mat)');
 
 clear all;
@@ -331,6 +337,7 @@ data_matrix = data;
 
 for ii = 1:(length(channel))
     xe(ii) = 0.1953e-3*abs(channel(ii)); 
+    lat(ii) =  0.1953e-3*channel(ii); 
     d_1(ii) = ((xe(ii)-((-7/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
     time_to_point_1(ii) = d_1(ii)/speed;
     d_2(ii) = ((xe(ii)-((-5/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
@@ -374,6 +381,7 @@ end
 
 
 end
+ax = [1:rows_data_matrix]*pixel_size_through_depth;
 
 [delay_rows delay_col delay_beams] = size(delayed_channel_1);
 delayed_channel = zeros(rows_data_matrix,128,128);
@@ -412,8 +420,9 @@ end
 
 summed_channels = sum(delayed_channel,2);
 figure;
-imagesc(20*log10(abs(hilbert(summed_channels(:,:)))));
+imagesc(lat,ax,20*log10(abs(hilbert(summed_channels(:,:)))));
 colormap('gray');
+axis image;
 title('8 parallel beams, (pointTargetData.mat)');
 
 clear all;
@@ -451,6 +460,7 @@ data_matrix = data;
 
 for ii = 1:(length(channel))
     xe(ii) = 0.1953e-3*abs(channel(ii)); 
+    lat(ii) = 0.1953e-3*channel(ii); 
     d_1(ii) = ((xe(ii)-((-15/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
     time_to_point_1(ii) = d_1(ii)/speed;
     d_2(ii) = ((xe(ii)-((-13/2)*0.1953e-3))^2+depth^2)^0.5 + depth;
@@ -525,6 +535,7 @@ end
 
 
 end
+ax = [1:rows_data_matrix]*pixel_size_through_depth;
 
 [delay_rows delay_col delay_beams] = size(delayed_channel_1);
 delayed_channel = zeros(rows_data_matrix,128,128);
@@ -587,7 +598,8 @@ end
 
 summed_channels = sum(delayed_channel,2);
 figure;
-imagesc(20*log10(abs(hilbert(summed_channels(:,:)))));
+imagesc(lat,ax,20*log10(abs(hilbert(summed_channels(:,:)))));
 colormap('gray');
+axis image;
 title('16 parallel beams, (pointTargetData.mat)');
 
